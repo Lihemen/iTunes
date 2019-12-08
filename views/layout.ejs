@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="/public/css/all.min.css">
+  <link rel="stylesheet" href="/public/css/style.min.css">
+
+  <title>iTunes</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="controls">
+      <div class="control-buttons">
+        <div class="buttons">
+          <button><i class="fas fa-backward"></i></button>
+          <button><i class="fas fa-play"></i></button>
+          <button><i class="fas fa-forward"></i></button>
+        </div>
+        <div class="volume">
+          <button><i class="fas fa-volume-up"></i></button>
+          <button><i class="fas fa-volume-down"></i></button>
+        </div>
+      </div>
+
+      <div class="logo">
+        <button><i class="fas fa-window-restore"></i></button>
+        <p><i class="fab fa-apple"></i></p>
+      </div>
+
+      <div class="activity">
+        <button class="list"><i class="fas fa-bars"></i></button>
+        <form action="">
+          <input type="search" name="search" id="search" placeholder="search...">
+        </form>
+        <div class="size">
+          <button id="minimize"><i class="fas fa-minus"></i></button>
+          <button id="maximize"><i class="far fa-window-restore"></i></button>
+          <button id="exit"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="links">
+      <ul>
+        <li><a href="">File</a></li>
+        <li><a href="">Edit</a></li>
+        <li><a href="">Song</a></li>
+        <li><a href="">View</a></li>
+        <li><a href="">Controls</a></li>
+        <li><a href="">Account</a></li>
+        <li><a href="">Help</a></li>
+      </ul>
+    </div>
+    <div class="itunes">
+      <div class="arrows">
+        <button><i class="fas fa-angle-left"></i></button>
+        <button><i class="fas fa-angle-right"></i></button>
+        <button class="music-icon"><i class="fas fa-music"></i><span>Music</span><i class="fas fa-angle-up prev"></i><i
+            class="fas fa-angle-down next"></i></button>
+      </div>
+
+      <ul>
+        <li><a href="/home">Library</a></li>
+        <li><a href="/home">For You</a></li>
+        <li><a href="/home">Browse</a></li>
+        <li><a href="/home">Radio</a></li>
+        <li><a href="/home">Store</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="sidebar">
+      <h5>Library</h5>
+      <ul>
+        <a href="/recently-added">
+          <li class="active"><i class="fa fa-table fa-fw"></i> Recently Added</li>
+        </a>
+        <a href="/artists">
+          <li><i class="fa fa-microphone fa-fw"></i> Artists</li>
+        </a>
+        <a href="/albums">
+          <li><i class="fa fa-film fa-fw"></i> Albums</li>
+        </a>
+        <a href="/songs">
+          <li><i class="fas fa-music fa-fw"></i> Songs</li>
+        </a>
+        <a href="/genres">
+          <li><i class="fas fa-guitar fa-fw"></i> Genres</li>
+        </a>
+        <a href="/downloaded">
+          <li><i class="fas fa-arrow-alt-circle-down fa-fw"></i> Downloaded</li>
+        </a>
+      </ul>
+      <h5 style="padding-top: 30px;">Music Playlists <i class="fas fa-angle-down"></i></h5>
+      <ul>
+        <a href="/">
+          <li><i class="fas fa-atom fa-fw"></i> Genius</li>
+        </a>
+        <a href="/">
+          <li><i class="fas fa-certificate fa-fw"></i> 90s Music</li>
+        </a>
+        <a href="/">
+          <li><i class="fas fa-certificate fa-fw"></i> Classical Music</li>
+        </a>
+        <a href="/">
+          <li><i class="fas fa-certificate fa-fw"></i> My Top Rated</li>
+        </a>
+        <a href="/recently-added">
+          <li><i class="fas fa-certificate fa-fw"></i> Recently Added</li>
+        </a>
+        <a href="/">
+          <li><i class="fas fa-certificate fa-fw"></i> Recently Played</li>
+        </a>
+        <a href="/">
+          <li><i class="fas fa-certificate fa-fw"></i> Top 25 Most Played</li>
+        </a>
+      </ul>
+    </div>
+    <div class="content">
+      <%- body %>
+    </div>
+  </div>
+
+</body>
+
+</html>

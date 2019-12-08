@@ -1,0 +1,24 @@
+{
+	"name": "itunes",
+	"version": "1.0.1",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"start": "node app.js",
+		"dev": "nodemon app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "Templates"
+	},
+	"author": "Hemense Lan",
+	"license": "ISC",
+	"dependencies": {
+		"ejs": "^3.0.1",
+		"express": "^4.17.1",
+		"express-ejs-layouts": "^2.5.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.19.4"
+	}
+}
