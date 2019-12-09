@@ -1,0 +1,461 @@
+@import "config";
+@import "variables";
+
+* {
+	margin: 0;
+	padding: 0;
+	cursor: default;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	overflow-x: hidden;
+	background: $white;
+	color: $black;
+}
+button,
+input {
+	outline: none;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 110px;
+	z-index: 1000;
+	.controls {
+		height: 60px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 1px solid $grey;
+		.control-buttons {
+			width: 25%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			background: $secondary-color;
+			height: inherit;
+			.buttons > button {
+				background: transparent;
+				border: none;
+				font-size: 1.3rem;
+				padding: 0 5px;
+			}
+			.fa-forward,
+			.fa-backward {
+				color: $grey;
+			}
+			.volume {
+				position: fixed;
+				left: 20%;
+				& > button {
+					background: transparent;
+					border: none;
+					padding: 10px;
+					font-size: 1rem;
+					color: $grey;
+				}
+			}
+		}
+		.logo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 50%;
+			background: $primary-color;
+			font-size: 2rem;
+			height: inherit;
+			color: $black;
+			& > button {
+				position: absolute;
+				top: 0;
+				left: 25.5%;
+				border: none;
+				background: transparent;
+				color: $grey;
+				display: none;
+			}
+			&:hover {
+				> button {
+					display: block;
+				}
+			}
+		}
+		.activity {
+			display: flex;
+			align-items: center;
+			width: 25%;
+			height: inherit;
+			background: $secondary-color;
+			> button {
+				border: 1px solid $grey;
+				border-radius: 5px;
+				background: $white;
+				color: $grey;
+				margin: 0 20px;
+				padding: 2px 5px;
+				font-size: 1.1rem;
+			}
+			.size {
+				position: fixed;
+				top: -2px;
+				right: 2px;
+				> button {
+					background: transparent;
+					border: none;
+					padding: 2px 5px;
+					&#exit:hover {
+						background: rgba(red, 0.8);
+					}
+					&:hover {
+						background: $accent;
+					}
+				}
+			}
+		}
+	}
+	.links {
+		height: 20px;
+		background: $primary-color;
+		width: inherit;
+		ul {
+			display: flex;
+			list-style: none;
+			a {
+				text-decoration: none;
+				font-size: 0.8rem;
+				color: $black;
+				padding: 0 5px;
+				&:hover {
+					background: $grey;
+					color: #fff;
+				}
+			}
+		}
+	}
+	.itunes {
+		height: 30px;
+		display: flex;
+		background: $white;
+		align-items: center;
+		border-bottom: 1px solid $secondary-color;
+		border-top: 1px solid $secondary-color;
+		ul {
+			display: flex;
+			list-style: none;
+			margin: 0 0 0 400px;
+			a {
+				text-decoration: none;
+				color: $black;
+				padding: 5px;
+				font-size: 0.9rem;
+				&:hover {
+					background: $accent;
+					color: $black;
+					border-radius: 3px;
+				}
+			}
+		}
+		.arrows {
+			> button {
+				padding: 0 5px;
+				margin: 0;
+				color: $grey;
+				border-radius: 3px;
+				border: 1px solid $secondary-color;
+				padding: 2.5px 10px;
+				font-size: 0.8rem;
+				background: inherit;
+			}
+		}
+		.music-icon {
+			padding: 2.5px 50px 2.5px 20px;
+			color: $grey;
+			position: relative;
+			background: inherit;
+			> span {
+				color: $black;
+				padding: 0 10px;
+			}
+			.fa-music {
+				position: absolute;
+				left: 2px;
+				top: 4px;
+			}
+			.fa-angle-up {
+				position: absolute;
+				right: 2px;
+				top: 0;
+			}
+			.fa-angle-down {
+				position: absolute;
+				right: 2px;
+				bottom: 0;
+				padding-top: 5px;
+			}
+		}
+	}
+}
+.container {
+	margin: 110px 0 0 0;
+	.sidebar {
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		padding: 10px 0;
+		width: 200px;
+		height: 100%;
+		border-right: 1px solid $secondary-color;
+		overflow: auto;
+		a {
+			text-decoration: none;
+			color: $black;
+			font-size: 14px;
+			padding: 5px 0;
+			&:hover,
+			li:hover {
+				background: $accent;
+				color: $black;
+				border-radius: 3px;
+			}
+		}
+		li {
+			padding: 4px 4px 4px 6px;
+		}
+		h5 {
+			border-bottom: 1px solid $secondary-color;
+			padding-bottom: 5px;
+			margin-bottom: 5px;
+		}
+	}
+	.content {
+		margin-left: 200px;
+		.cards {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+			column-gap: 1rem;
+			row-gap: 2rem;
+			padding: 0 30px 60px 30px;
+			position: relative;
+			.card {
+				h5 {
+					font-size: 1rem;
+				}
+				p {
+					font-size: 0.9rem;
+				}
+				> button {
+					position: absolute;
+					top: 55%;
+					left: 2px;
+					font-size: 1rem;
+					background: #fff;
+					color: $blue;
+					border: 1px solid #fff;
+					border-radius: 20px;
+					padding: 5px 10px;
+					display: none;
+				}
+				position: relative;
+				img {
+					width: 100%;
+					border-radius: 5px;
+				}
+				&:hover {
+					> button {
+						display: block;
+					}
+				}
+			}
+		}
+	}
+}
+.downloaded,
+.albums {
+	padding-top: 10px;
+	margin-top: 110px;
+	z-index: -50;
+}
+.artists {
+	position: fixed;
+	top: 110px;
+	display: flex;
+	flex-direction: column;
+	width: 280px;
+	height: 100%;
+	border-right: 1px solid $primary-color;
+	overflow-y: scroll;
+	.fa-music {
+		background: $accent;
+		color: $white;
+	}
+	ul {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+		color: $black;
+		font-size: 14px;
+		display: flex;
+		align-items: center;
+		border-bottom: 1px solid $primary-color;
+		&:hover {
+			background: $accent;
+			color: $black;
+		}
+	}
+
+	li {
+		padding: 4px 0;
+		align-items: center;
+	}
+	.title-mic {
+		padding: 3px 10px;
+		margin: 0 10px;
+		border: 1px solid $white;
+		border-radius: 60px;
+	}
+	.song-img {
+		padding: 10px;
+		margin: 5px;
+		border: 1px solid $accent;
+		border-radius: 60px;
+	}
+}
+
+.artists-songs {
+	// width: calc(100% - 350px);
+	position: absolute;
+	left: 300px;
+	margin: 0 20px;
+}
+.tiles {
+	padding: 5px 10px;
+	span {
+		display: flex;
+		justify-content: space-between;
+		border-bottom: 1px solid $primary-color;
+		padding-bottom: 5px;
+
+		.fa-ellipsis-h {
+			border: 1px solid $blue;
+			padding: 5px;
+			border-radius: 50px;
+			background: $blue;
+			color: #fff;
+		}
+	}
+}
+
+.tile-body {
+	display: flex;
+	justify-content: space-between;
+	align-items: top;
+
+	.fa-ellipsis-h {
+		color: $blue;
+		position: absolute;
+		right: 5%;
+		margin-top: 20px;
+	}
+	#img-cont {
+		position: relative;
+		display: flex;
+		padding: 10px 0;
+		width: 100%;
+		align-items: center;
+		img {
+			width: 100%;
+			border-radius: 5px;
+			border: none;
+			background: transparent;
+			position: relative;
+		}
+		.fa-play {
+			position: absolute;
+			top: 40%;
+			left: 40%;
+			background: #fff;
+			padding: 10px;
+			color: $blue;
+			border-radius: 50px;
+			display: none;
+			font-size: 1.3rem;
+		}
+		&:hover {
+			.fa-play {
+				display: block;
+			}
+		}
+	}
+	.duration {
+		border-bottom: 1px solid $primary-color;
+		padding: 5px 0;
+		display: flex;
+		justify-content: space-between;
+		> p {
+			font-size: 0.8rem;
+		}
+	}
+	.song-details {
+		padding: 10px 10px 0 20px;
+		align-items: center;
+		> p {
+			border-bottom: 1px solid $primary-color;
+			width: 500px;
+			margin-bottom: 10px;
+		}
+	}
+}
+.tile {
+	margin-bottom: 30px;
+}
+
+table {
+	width: 100%;
+	padding: 0 1rem;
+	th {
+		font-size: 0.9rem;
+		font-weight: normal;
+		text-align: left;
+	}
+	td {
+		border-bottom: 1px solid $primary-color;
+		align-items: left;
+		font-size: 0.8rem;
+	}
+}
+tr:nth-child(even) {
+	background: $primary-color;
+}
+#song {
+	&-check {
+		width: 1%;
+	}
+	&-title {
+		position: relative;
+	}
+}
+.fa-cloud {
+	color: $secondary-color;
+	position: absolute;
+	border-left: 1px solid $accent;
+	border-right: 1px solid $accent;
+	right: 10px;
+	padding: 0 3px;
+}
+.tile > span > span {
+	display: flex;
+	flex-direction: column;
+	.fas {
+		padding: 5px;
+		margin: 0;
+	}
+}
