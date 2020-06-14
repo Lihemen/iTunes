@@ -9,7 +9,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "Templates"
+		"url": "https://git.heoku.com/ituunes"
 	},
 	"author": "Hemense Lan",
 	"license": "ISC",
