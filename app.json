@@ -1,7 +1,7 @@
 {
 	"name": "iTunes web and desktop version template",
 	"description": "A personal template designed to mock iTunes web and desktop site",
-	"repository": "https://git.heoku.com/ituunes",
+	"repository": "https://git.heroku.com/ituunes",
 	"keyords": ["node", "express", "music", "iTunes", "ejs"],
 	"image": "heroku/nodejs"
 }
