@@ -1,5 +1,5 @@
-@import "config";
-@import "variables";
+@import 'config';
+@import 'variables';
 
 * {
 	margin: 0;
@@ -36,12 +36,17 @@ input {
 		align-items: center;
 		border-bottom: 1px solid $grey;
 		.control-buttons {
-			width: 25%;
+			width: 30%;
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			background: $secondary-color;
 			height: inherit;
+			position: relative;
+			.buttons {
+				position: fixed;
+				left: 0%;
+			}
 			.buttons > button {
 				background: transparent;
 				border: none;
@@ -53,8 +58,12 @@ input {
 				color: $grey;
 			}
 			.volume {
-				position: fixed;
-				left: 20%;
+				position: absolute;
+				display: flex;
+				align-items: center;
+				top: 22%;
+				padding: 0;
+				right: 0%;
 				& > button {
 					background: transparent;
 					border: none;
@@ -63,20 +72,44 @@ input {
 					color: $grey;
 				}
 			}
+			@media (max-width: 760px) {
+				& .volume {
+					position: absolute;
+					display: flex;
+					align-items: center;
+					top: 22%;
+					padding: 0;
+					right: 0%;
+					& > button {
+						background: transparent;
+						border: none;
+						padding: 10px 2px 10px 8px;
+						font-size: 1rem;
+						color: $grey;
+					}
+				}
+				.buttons > button {
+					background: transparent;
+					border: none;
+					font-size: 1.3rem;
+					padding: 0 2.5px 0 2.5px;
+				}
+			}
 		}
 		.logo {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			width: 50%;
+			width: 40%;
 			background: $primary-color;
 			font-size: 2rem;
 			height: inherit;
 			color: $black;
+			position: relative;
 			& > button {
 				position: absolute;
 				top: 0;
-				left: 25.5%;
+				left: 2%;
 				border: none;
 				background: transparent;
 				color: $grey;
@@ -91,7 +124,8 @@ input {
 		.activity {
 			display: flex;
 			align-items: center;
-			width: 25%;
+			width: 30%;
+			position: relative;
 			height: inherit;
 			background: $secondary-color;
 			> button {
@@ -102,6 +136,9 @@ input {
 				margin: 0 20px;
 				padding: 2px 5px;
 				font-size: 1.1rem;
+			}
+			#search {
+				width: 100%;
 			}
 			.size {
 				position: fixed;
@@ -124,7 +161,7 @@ input {
 	.links {
 		height: 20px;
 		background: $primary-color;
-		width: inherit;
+		width: 100%;
 		ul {
 			display: flex;
 			list-style: none;
@@ -143,28 +180,15 @@ input {
 	.itunes {
 		height: 30px;
 		display: flex;
+		position: relative;
 		background: $white;
+		width: 100%;
 		align-items: center;
 		border-bottom: 1px solid $secondary-color;
 		border-top: 1px solid $secondary-color;
-		ul {
-			display: flex;
-			list-style: none;
-			margin: 0 0 0 400px;
-			a {
-				text-decoration: none;
-				color: $black;
-				padding: 5px;
-				font-size: 0.9rem;
-				&:hover {
-					background: $accent;
-					color: $black;
-					border-radius: 3px;
-				}
-			}
-		}
 		.arrows {
-			> button {
+			display: flex;
+			& > button {
 				padding: 0 5px;
 				margin: 0;
 				color: $grey;
@@ -175,6 +199,34 @@ input {
 				background: inherit;
 			}
 		}
+		ul {
+			display: flex;
+			position: absolute;
+			left: 10%;
+			list-style: none;
+			margin: 0 0 0 400px;
+			@media (max-width: 760px) {
+				& {
+					display: none;
+				}
+			}
+			li {
+				margin: 5px;
+				display: flex;
+				a {
+					text-decoration: none;
+					color: $black;
+
+					font-size: 0.9rem;
+					&:hover {
+						background: $accent;
+						color: $black;
+						border-radius: 3px;
+					}
+				}
+			}
+		}
+
 		.music-icon {
 			padding: 2.5px 50px 2.5px 20px;
 			color: $grey;
@@ -205,8 +257,11 @@ input {
 }
 .container {
 	margin: 110px 0 0 0;
+	z-index: -5000;
+
 	.sidebar {
 		position: fixed;
+		left: 0%;
 		display: flex;
 		flex-direction: column;
 		padding: 10px 0;
@@ -214,6 +269,11 @@ input {
 		height: 100%;
 		border-right: 1px solid $secondary-color;
 		overflow: auto;
+		@media (max-width: 760px) {
+			& {
+				width: 150px;
+			}
+		}
 		a {
 			text-decoration: none;
 			color: $black;
@@ -237,6 +297,11 @@ input {
 	}
 	.content {
 		margin-left: 200px;
+		@media (max-width: 760px) {
+			& {
+				margin-left: 150px;
+			}
+		}
 		.cards {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -331,7 +396,7 @@ input {
 }
 
 .artists-songs {
-	// width: calc(100% - 350px);
+	width: calc(100% - 350px);
 	position: absolute;
 	left: 300px;
 	margin: 0 20px;
@@ -457,5 +522,11 @@ tr:nth-child(even) {
 	.fas {
 		padding: 5px;
 		margin: 0;
+	}
+}
+@media (max-width: 760px) {
+	.fas,
+	.fa {
+		font-size: 12px;
 	}
 }
