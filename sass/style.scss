@@ -482,7 +482,15 @@ input {
 .tile {
 	margin-bottom: 30px;
 }
+.songs {
+	margin-left: 200px;
 
+	@media (max-width: 760px) {
+		& {
+			margin-left: 150px;
+		}
+	}
+}
 table {
 	width: 100%;
 	padding: 0 1rem;
